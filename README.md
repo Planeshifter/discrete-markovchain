@@ -3,7 +3,7 @@
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependencies][dependencies-image]][dependencies-url]
 
-discrete-markovchainr
+discrete-markovchain
 ==========
 
 > discrete time, discrete state space Markov chain package written in JS for *node.js* and the browser
