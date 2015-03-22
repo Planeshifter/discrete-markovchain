@@ -1,5 +1,14 @@
+#############
+# Variables #
+#############
+
+# BABEL
+
+BABEL ?= ./node_modules/.bin/babel
+
+
 all:
-	babel -d lib/ src/
+	$(BABEL) -d lib/ src/
 
 clean:
 	rm lib/*.js

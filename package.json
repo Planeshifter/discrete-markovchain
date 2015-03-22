@@ -4,6 +4,7 @@
   "description": "discrete time, discrete state space Markov chain package",
   "main": "lib/index.js",
   "scripts": {
+    "prepublish": "make all",
     "test": "./node_modules/.bin/mocha",
     "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coverage -- -R spec",
     "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coveralls/coverage --report lcovonly -- -R spec && cat ./reports/coveralls/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./reports/coveralls"
@@ -28,6 +29,7 @@
     "lodash": "^3.5.0"
   },
   "devDependencies": {
+    "babel": "^4.7.16",
     "chai": "^2.1.2",
     "coveralls": "^2.11.2",
     "istanbul": "^0.3.8",
