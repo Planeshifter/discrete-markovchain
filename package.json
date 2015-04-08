@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/Planeshifter/discrete-markovchain",
   "dependencies": {
-    "lodash": "^3.5.0"
+    "lodash": "^3.5.0",
+    "validate.io-square-matrix": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^4.7.16",

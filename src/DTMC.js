@@ -1,12 +1,31 @@
 'use strict';
 
 const _ = require( 'lodash' );
+const isSquareMatrix = require( 'validate.io-square-matrix' );
 
 function DiscreteTimeMarkovChain( transMatrix, states ) {
 
-  this.transitionMatrix = transMatrix;
-  this.dim = transMatrix.length;
-  this.states = states;
+    if ( isSquareMatrix(transMatrix) === false ) {
+        throw new TypeError("Supplied transition matrix is not a square matrix, i.e. an array of arrays of equal length.");
+    } else {
+        transMatrix.forEach( (row, index) => {
+            if (row.reduce( (a,b) => a + b) !== 1) {
+                throw new RangeError("Elements of row" + index + " of the supplied matrix do not sum to one");
+            }
+        });
+    }
+
+    this.transitionMatrix = transMatrix;
+    this.dim = transMatrix.length;
+
+    this.states = null;
+    if ( states !== undefined ) {
+        if ( Array.isArray(states) && states.all( state => typeof state === "string" ) ) {
+            this.states = states;
+        } else {
+            throw new TypeError("You have to supply an array of strings for the states parameter.");
+        }
+    }
 
 }
 
