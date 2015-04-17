@@ -14,6 +14,9 @@ var vec = dtmc.run(0, 1000, {'replications':1});
 
 console.log( vec );
 
+console.log( markov.logLik( vec, 1 ) );
+
+console.log( markov.logLik( vec, 2 ) );
 
 var transMatrix20 = dtmc.getTransitionMatrix( 20 );
 

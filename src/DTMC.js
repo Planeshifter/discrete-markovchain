@@ -20,8 +20,12 @@ function DiscreteTimeMarkovChain( transMatrix, states ) {
 
     this.states = null;
     if ( states !== undefined ) {
-        if ( Array.isArray(states) && states.all( state => typeof state === "string" ) ) {
-            this.states = states;
+        if ( Array.isArray(states) && states.every( state => typeof state === "string" ) ) {
+            if ( states.length === transMatrix.length ) {
+                this.states = states;
+            } else {
+                throw new TypeError("Array of state names does not have same dimension as transition matrix.");
+            }
         } else {
             throw new TypeError("You have to supply an array of strings for the states parameter.");
         }
@@ -76,22 +80,22 @@ DiscreteTimeMarkovChain.prototype.run = function( start, steps, options = {
     let U;
 
     for ( let j=0; j < steps; j++ ) {
-      U = Math.random();
-      var sum = 0;
-      for( let k=0; k < stateRow.length; k++ ) {
-        sum += stateRow[ k ];
-        if ( sum > U ) {
-          resVector.push( k );
-          stateRow = this.transitionMatrix[ k ];
-          k = stateRow.length;
+        U = Math.random();
+        var sum = 0;
+        for( let k=0; k < stateRow.length; k++ ) {
+            sum += stateRow[ k ];
+            if ( sum > U ) {
+                resVector.push( k );
+                stateRow = this.transitionMatrix[ k ];
+                k = stateRow.length;
+            }
         }
-      }
     }
 
     if ( options.keep ) {
-      run.realizations.push( _.at(resVector, options.keep) );
+        run.realizations.push( _.at(resVector, options.keep) );
     } else {
-      run.realizations.push( resVector );
+        run.realizations.push( resVector );
     }
 
   }
