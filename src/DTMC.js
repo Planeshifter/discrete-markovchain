@@ -79,10 +79,10 @@ DiscreteTimeMarkovChain.prototype.run = function( start, steps, options = {
     let stateRow = this.transitionMatrix[ start ];
     let U;
 
-    for ( let j=0; j < steps; j++ ) {
+    for ( let j = 0; j < steps; j++ ) {
         U = Math.random();
         var sum = 0;
-        for( let k=0; k < stateRow.length; k++ ) {
+        for( let k = 0; k < stateRow.length; k++ ) {
             sum += stateRow[ k ];
             if ( sum > U ) {
                 resVector.push( k );

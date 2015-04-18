@@ -18,6 +18,8 @@ console.log( markov.logLik( vec, 1 ) );
 
 console.log( markov.logLik( vec, 2 ) );
 
+console.log( markov.lrt( vec ) );
+
 var transMatrix20 = dtmc.getTransitionMatrix( 20 );
 
 console.log( transMatrix20 );
