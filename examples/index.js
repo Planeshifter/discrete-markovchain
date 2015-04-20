@@ -20,6 +20,14 @@ console.log( markov.logLik( vec, 2 ) );
 
 console.log( markov.lrt( vec ) );
 
+var distT = markov.lrt( vec ).concat( markov.lrt( dtmc.run(0, 1000, {'replications': 499}) ) )
+    .map( function( o ) {
+        return o.T;
+    });
+
+
+console.log( distT );
+
 var transMatrix20 = dtmc.getTransitionMatrix( 20 );
 
 console.log( transMatrix20 );
