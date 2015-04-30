@@ -8,7 +8,7 @@ BABEL ?= ./node_modules/.bin/babel
 
 
 all:
-	$(BABEL) -d lib/ src/
+	$(BABEL) --stage 0 -d lib/ src/ 
 
 clean:
 	rm lib/*.js

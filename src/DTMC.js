@@ -112,18 +112,22 @@ class DiscreteTimeMarkovChain{
 
     communicatingClasses() {
         var m = this.dim;
-        var arr = Array.apply(0, Array(m)).map(function(x, y) { return y });
-        var T = [ for( i of arr ) new Set().add(i) ];
+        var arr = Array.apply(0, Array(m)).map((x, y) => y);
+        var T = [ for( j of arr ) new Set().add(j) ];
         var Tmat = ndarray(new Array(m*m), [m, m]);
         fill(Tmat, () => 0);
 
         let i = 1;
-        while ( i <= m ) {
+        while ( i < m ) {
+            console.log(T)
             var current = T[i].length;
             var previous = 0;
             while ( previous !== current ) {
                 previous = current;
-                this.transitionMatrix[i].map( (x, index) => {x, index})
+                this.transitionMatrix[i]
+                    .map( (x, index) => {
+                        return {'x':x,'index':index};
+                    })
                     .filter( o => o.x > 0 )
                     .forEach( (o) => {
                         T[i].add(o.index);
@@ -134,9 +138,9 @@ class DiscreteTimeMarkovChain{
             i++;
         }
         var Fmat = Tmat.transpose(1, 0);
-        var Cmat;
+        var Cmat = ndarray(new Array(m*m), [m, m]);
         ops.mul(Cmat, Tmat, Fmat);
-        return {'C':Cmat, 'v':v};
+        return {'C':Cmat};
     }
 
 }

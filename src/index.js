@@ -1,5 +1,7 @@
 'use strict';
 
+require("babel/polyfill");
+
 module.exports = {
 	'DTMC': require( './DTMC' ),
 	'fit' : require( './fit' ),
