@@ -28,6 +28,9 @@
   "dependencies": {
     "jStat": "^1.1.3",
     "lodash": "^3.5.0",
+    "ndarray": "^1.0.16",
+    "ndarray-fill": "^1.0.1",
+    "ndarray-ops": "^1.2.2",
     "validate.io-square-matrix": "^1.0.0"
   },
   "devDependencies": {
