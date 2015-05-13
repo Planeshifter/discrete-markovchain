@@ -8,6 +8,18 @@ discrete-markovchain
 
 > discrete time, discrete state space Markov chain package written in JS for *node.js* and the browser
 
+## Getting Started 
+
+### Installation 
+
+``` javascript 
+npm install discrete-markovchain
+```
+
+### Usage
+
+## API
+
 ## Unit Tests
 
 Run tests via the command `npm test`
